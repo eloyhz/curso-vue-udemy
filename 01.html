@@ -9,13 +9,15 @@
 <body>
   <div id="app">
     <h1>{{ titulo }}</h1>
-    <input type="text" v-model="nuevaFruta">
+    <input type="text" v-model="nuevaFruta"  @keyup.enter="agregarFruta" placeholder="Fruta">
     <button @click="agregarFruta">Agregar</button>
     <ul>
-      <li v-for="fruta of frutas">{{ fruta.cantidad }} - {{ fruta.nombre }}
+      <li v-for="fruta of frutas">
+        <input type="number" v-model.number="fruta.cantidad"> => {{ fruta.nombre }}
         <span v-if="fruta.cantidad === 0"> - Sin stock</span>
       </li>
     </ul>
+    <h4>Total = {{ totalFrutas }}</h4>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="01.js"></script>
